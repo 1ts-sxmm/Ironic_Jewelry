@@ -52,7 +52,7 @@ export const deleteProduct = async(id) => {
     const product = await productModel.getProductByID(id);
 
     if (!product) {
-        throw new Error('Producto no encontrado!')
+        throw new Error('Producto no encontrado!');
     }
 
     return await productModel.deleteProduct(id);
