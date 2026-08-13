@@ -1,5 +1,23 @@
 const API_URL = "http://localhost:5000/api/products";
 
+let allProducts = [];
+
+const searchInput = document.querySelector("#search-input");
+
+searchInput.addEventListener("input", (event) => {
+    const searchText = event.target.value.toLowerCase().trim();
+    
+    const filteredProducts = allProducts.filter(product => {
+        return (
+            product.name.toLowerCase().includes(searchText) ||
+            product.category.toLowerCase().includes(searchText) ||
+            product.material.toLowerCase().includes(searchText)
+        );
+    });
+
+    showProducts(filteredProducts);
+});
+
 const getProducts = async () => {
     console.log("Buscando productos...");
 
@@ -9,6 +27,8 @@ const getProducts = async () => {
 
         const products = await response.json();
         console.log("Productos:", products);
+
+        allProducts = products;
 
         showProducts(products);
     } catch(error) {
