@@ -18,6 +18,41 @@ searchInput.addEventListener("input", (event) => {
     showProducts(filteredProducts);
 });
 
+const categoryButtons = document.querySelectorAll(".category-filter");
+
+categoryButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        // Quitar estado activo de todos
+        categoryButtons.forEach(btn => {
+            btn.classList.remove("bg-black", "text-white");
+            btn.classList.add("bg-white", "text-black");
+        });
+
+        // Activar botón seleccionado
+        button.classList.remove("bg-white", "text-black");
+        button.classList.add("bg-black", "text-white");
+
+        const category = button.dataset.category;
+
+        if (category === "Todos") {
+
+            showProducts(allProducts);
+
+        } else {
+
+            const filteredProducts = allProducts.filter(product =>
+                product.category.toLowerCase() === category.toLowerCase()
+            );
+
+            showProducts(filteredProducts);
+        }
+
+    });
+
+});
+
 const getProducts = async () => {
     console.log("Buscando productos...");
 
