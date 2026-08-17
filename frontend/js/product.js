@@ -2,7 +2,7 @@ const params = new URLSearchParams(window.location.search);
 
 const id = params.get("id");
 
-const API_URL = `http://localhost:5000/api/products/${id}`;
+const API_URL = `https://ironic-jewelry.onrender.com/api/products/${id}`;
 
 const getProduct = async () => {
     try {
