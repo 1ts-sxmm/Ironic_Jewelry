@@ -2,6 +2,8 @@ import app from './app.js';
 import pool from './config/database.js'
 import 'dotenv/config';
 
+const PORT = process.env.PORT || 5000;
+
 const startServer = async () => {
     try {
         await pool.query('SELECT NOW()');
@@ -9,7 +11,7 @@ const startServer = async () => {
         console.log('PostgreSQL conectado!');
 
         app.listen(process.env.PORT, () => {
-            console.log(`Servidor corriendo en el puerto ${process.env.PORT}`);
+            console.log(`Servidor corriendo en el puerto ${PORT}`);
         });
 
     } catch (error) {

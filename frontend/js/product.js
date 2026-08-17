@@ -30,6 +30,15 @@ const showProduct = (product) => {
 
     document.querySelector("#description").textContent =
         product.description;
+
+    const phone = "51902845733";
+
+    const message = `Hola, quisiera consultar por la joya "${product.name}".`;
+
+    const whatsappURL =
+        `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    document.querySelector("#whatsapp-button").href = whatsappURL;
 }
 
 getProduct();
